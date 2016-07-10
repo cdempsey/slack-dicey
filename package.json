@@ -5,13 +5,13 @@
     "main": "index.js",
     "scripts": {
         "start": "node index.js",
-        "test": "node index.js"
+        "test": "mocha"
     },
     "keywords": [
         "slack",
         "slash command",
         "rpg",
-        "rolz"
+        "rolz",
         "dice",
         "dice roller"
     ],
@@ -19,5 +19,9 @@
     "license": "MIT",
     "dependencies": {
         "botkit": "^0.2.2"
+    },
+    "devDependencies": {
+        "chai": "^3.5.0",
+        "mocha": "^2.5.3"
     }
 }
