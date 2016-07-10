@@ -7,6 +7,7 @@ to roll virtual dice.
 
 ```
 /roll 3d6 - *rolls 3 six-sided dice*
+/roll 4d6H3 - *rolls 4 six-sided dice and keep the highest 3*
 /roll d100 - *rolls 2 ten-sided dice to generate a number between 1 and 100*
 ```
 
@@ -15,20 +16,30 @@ See [Rolz Help Page](https://rolz.org/help/index) for more dice expressions that
 
 ## Getting Started
 
+These instructions will get you a copy of the project up and running on your
+local machine for development and testing purposes. See **Deployment** for notes
+on how to deploy the project on a live system.
+
 ### Prerequisities
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
-
-## Built With
-
+You will need the following on your development machine:
 * [Node.js](https://nodejs.org/en/)
 * [npm](https://www.npmjs.com/)
 
 See [package.json](package.json) for specific Node modules used in the project.
+
+### Installing
+
+To get the project up and running on your development machine you'll need to
+ensure all of the software under **Prerequisities** is installed and running
+correctly.
+
+```
+git clone https://github.com/cdempsey/slack-dicey.git
+cd <project root directory>
+npm install
+npm test
+```
 
 ## Running the tests
 
@@ -41,6 +52,12 @@ npm test
 ```
 
 ## Deployment
+
+While the target deployment environment is to run the code on
+[AWS Lambda](https://aws.amazon.com/lambda/) behind
+[AWS API Gateway](https://aws.amazon.com/api-gateway/) there isn't any tie
+between the code and AWS. Any runtime environment capable of running
+[Node.js](https://nodejs.org/en/) that is Internet addressable should work.
 
 ## Versioning
 
