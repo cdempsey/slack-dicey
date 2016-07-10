@@ -1,0 +1,23 @@
+{
+    "name": "slack-dicey",
+    "version": "1.0.0",
+    "description": "App that adds slash commands to Stack for RPG dice rolling through the Rolz.org API",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "test": "node index.js"
+    },
+    "keywords": [
+        "slack",
+        "slash command",
+        "rpg",
+        "rolz"
+        "dice",
+        "dice roller"
+    ],
+    "author": "Chris Dempsey",
+    "license": "MIT",
+    "dependencies": {
+        "botkit": "^0.2.2"
+    }
+}
