@@ -11,7 +11,7 @@
 * [Node.js](https://nodejs.org/en/)
 * [npm](https://www.npmjs.com/)
 
-See [package.json](https://github.com/cdempsey/slack-dicey/package.json) for specific Node modules used in the project.
+See [package.json](https://github.com/cdempsey/slack-dicey/blob/master/package.json) for specific Node modules used in the project.
 
 ## Versioning
 
@@ -21,7 +21,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 * **Chris Dempsey** - *Initial work*
 
-See also the list of [contributors](https://github.com/cdempsey/slack-dicey/contributors.md) who participated in this project.
+See also the list of [contributors](https://github.com/cdempsey/slack-dicey/blob/master/contributors.md) who participated in this project.
 
 ## License
 
