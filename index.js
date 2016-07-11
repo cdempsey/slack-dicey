@@ -65,6 +65,6 @@ controller.on('slash_command', function(slashCommand, message) {
 
             break;
         default:
-            slashCommand.replyPublic(message, "I don't know how to " + message.command + " yet.");
+            slashCommand.replyPrivate(message, "I don't know how to " + message.command + " yet.");
     }
 });
