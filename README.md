@@ -59,6 +59,17 @@ While the target deployment environment is to run the code on
 between the code and AWS. Any runtime environment capable of running
 [Node.js](https://nodejs.org/en/) that is Internet addressable should work.
 
+After completing the steps under **Installation** developers on OSX or Linux can:
+
+```
+chmod u+x aws.sh
+./aws.sh
+```
+
+Which will create a new file, dicey.zip, in a new sub-directory named /build that
+can be used to upload as a
+[AWS Lambda deployment package](http://docs.aws.amazon.com/lambda/latest/dg/nodejs-create-deployment-pkg.html)
+
 ## Versioning
 
 We use [SemVer](http://semver.org/) for versioning. For the versions available,
