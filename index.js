@@ -20,7 +20,8 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-var Botkit = require('botkit');
+const Botkit = require('botkit');
+const Rolz = require('./rolz');
 
 if (!process.env.CLIENT_ID || !process.env.CLIENT_SECRET || !process.env.PORT || !process.env.VERIFICATION_TOKEN) {
     console.log('Error: Specify CLIENT_ID, CLIENT_SECRET, VERIFICATION_TOKEN and PORT in environment');
@@ -64,6 +65,6 @@ controller.on('slash_command', function(slashCommand, message) {
 
             break;
         default:
-            slashCommand.replyPublic(message, "I don't know how to " + message.command + " yet.");
+            slashCommand.replyPrivate(message, "I don't know how to " + message.command + " yet.");
     }
 });
