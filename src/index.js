@@ -61,6 +61,8 @@ controller.on('slash_command', function (slashCommand, message) {
         } else {
             rolz.roll(message.text, function (data) {
                 slashCommand.replyPublic(message, formatRolzResult(message, JSON.parse(data)));
+            }, function (error) {
+                slashCommand.replyPrivate(message, "I don't know how to " + message.command + " yet.");
             });
         }
 
