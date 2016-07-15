@@ -21,7 +21,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
 const assert = require('chai').assert;
-const rolz = require('../rolz');
+const rolz = require('../src/rolz');
 
 /*
  * This tests the ../rolz.js module.

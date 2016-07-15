@@ -1,5 +1,4 @@
-/*
-The MIT License (MIT)
+/*The MIT License (MIT)
 Copyright (c) 2016 Chris Dempsey <cdallas@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
@@ -35,7 +34,7 @@ const rolzOptions = {
 };
 
 function buildRolzURI(diceExpression, type) {
-    return "https://" + rolzOptions.host + ':' + rolzOptions.port + rolzOptions.path + diceExpression + '.' + type;
+    return `https://${rolzOptions.host}:${rolzOptions.port}${rolzOptions.path}${diceExpression}.${type}`;
 }
 
 function isInvalidDiceExpression(result) {
@@ -66,10 +65,10 @@ function callRolzAPI(rolzUrl, callback, errorback) {
         });
 }
 
-exports.roll = function(diceExpression, callback, errorback) {
+exports.roll = function (diceExpression, callback, errorback) {
     callRolzAPI(buildRolzURI(diceExpression, "json"), callback, errorback);
 }
 
-exports.simpleRoll = function(diceExpression, callback, errorback) {
+exports.simpleRoll = function (diceExpression, callback, errorback) {
     callRolzAPI(buildRolzURI(diceExpression, "simple"), callback, errorback);
 }
