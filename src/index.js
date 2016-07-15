@@ -34,7 +34,7 @@ var config = {
 
 function formatRolzResult(message, data) {
     var username = message.user_name;
-    return `${username} rolled ${message.text} and got a result of ${data.result} [dice: ${data.details}]`;
+    return `${username} rolled ${message.text} and got a result of ${data.result} [dice: ${data.details}]\n`;
 };
 
 var controller = Botkit.slackbot(config);
@@ -56,15 +56,13 @@ controller.on('slash_command', function (slashCommand, message) {
 
         if (message.text === "" || message.text === "help") {
             slashCommand.replyPublic(message, "Roll dice using the Rolz.org API. See https://rolz.org/wiki/page?w=help&n=index");
-        }
-
-        if (message.text === "code") {
+        } else if (message.text === "code") {
             slashCommand.replyPublic(message, "See https://github.com/cdempsey/slack-dicey");
+        } else {
+            rolz.roll(message.text, function (data) {
+                slashCommand.replyPublic(message, formatRolzResult(message, JSON.parse(data)));
+            });
         }
-
-        rolz.roll(message.text, function(data) {
-            slashCommand.replyPublic(message, formatRolzResult(message, JSON.parse(data)));
-        });
 
         break;
     default:
