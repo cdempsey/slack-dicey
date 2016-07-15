@@ -21,50 +21,53 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
 const Botkit = require('botkit');
-const Rolz = require('./rolz');
+const rolz = require('./rolz');
 
 if (!process.env.CLIENT_ID || !process.env.CLIENT_SECRET || !process.env.PORT || !process.env.VERIFICATION_TOKEN) {
     console.log('Error: Specify CLIENT_ID, CLIENT_SECRET, VERIFICATION_TOKEN and PORT in environment');
     process.exit(1);
 }
 
-var config = {}
+var config = {
+    debug: false
+};
 
-var controller = Botkit.slackbot(config).configureSlackApp({
-    clientId: process.env.CLIENT_ID,
-    clientSecret: process.env.CLIENT_SECRET,
-    scopes: ['commands'],
+function formatRolzResult(message, data) {
+    var username = message.user_name;
+    return `${username} rolled ${message.text} and got a result of ${data.result} [dice: ${data.details}]`;
+};
+
+var controller = Botkit.slackbot(config);
+
+controller.setupWebserver(process.env.PORT, function (err, webserver) {
+    controller.createWebhookEndpoints(webserver);
 });
 
-controller.setupWebserver(process.env.PORT, function(err, webserver) {
-    controller.createWebhookEndpoints(controller.webserver);
+controller.spawn({
+    token: process.env.VERIFICATION_TOKEN
+}).startRTM();
 
-    controller.createOauthEndpoints(controller.webserver, function(err, req, res) {
-        if (err) {
-            res.status(500).send('ERROR: ' + err);
-        } else {
-            res.send('Success!');
-        }
-    });
-});
-
-controller.on('slash_command', function(slashCommand, message) {
+controller.on('slash_command', function (slashCommand, message) {
 
     if (message.token !== process.env.VERIFICATION_TOKEN) return;
 
     switch (message.command) {
-        case "/roll":
+    case "/roll":
 
-            if (message.text === "" || message.text === "help") {
+        if (message.text === "" || message.text === "help") {
+            slashCommand.replyPublic(message, "Roll dice using the Rolz.org API. See https://rolz.org/wiki/page?w=help&n=index");
+        }
 
-            }
+        if (message.text === "code") {
+            slashCommand.replyPublic(message, "See https://github.com/cdempsey/slack-dicey");
+        }
 
-            slashCommand.replyPublic(message, "1", function() {
-                slashCommand.replyPublicDelayed(message, "2").then(slashCommand.replyPublicDelayed(message, "3"));
-            });
+        rolz.roll(message.text, function(data) {
+            slashCommand.replyPublic(message, formatRolzResult(message, JSON.parse(data)));
+        });
 
-            break;
-        default:
-            slashCommand.replyPrivate(message, "I don't know how to " + message.command + " yet.");
+        break;
+    default:
+        slashCommand.replyPrivate(message, "I don't know how to " + message.command + " yet.");
     }
 });
