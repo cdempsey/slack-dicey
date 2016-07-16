@@ -23,8 +23,8 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 const Botkit = require('botkit');
 const rolz = require('./rolz');
 
-if (!process.env.CLIENT_ID || !process.env.CLIENT_SECRET || !process.env.PORT || !process.env.VERIFICATION_TOKEN) {
-    console.log('Error: Specify CLIENT_ID, CLIENT_SECRET, VERIFICATION_TOKEN and PORT in environment');
+if (!process.env.PORT || !process.env.VERIFICATION_TOKEN) {
+    console.log('Error: Specify VERIFICATION_TOKEN and PORT in environment');
     process.exit(1);
 }
 
