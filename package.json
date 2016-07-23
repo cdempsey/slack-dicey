@@ -1,37 +1,35 @@
 {
-    "name": "slack-dicey",
-    "version": "1.0.0",
-    "description": "App that adds slash commands to Stack for RPG dice rolling through the Rolz.org API",
-    "author": "Chris Dempsey <cdallas@gmail.com>",
-    "main": "index.js",
-    "scripts": {
-        "start": "node ./src/index.js",
-        "test": "mocha"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/cdempsey/slack-dicey"
-    },
-    "bugs": {
-        "url": "https://github.com/cdempsey/slack-dicey/issues"
-    },
-    "keywords": [
-        "slack",
-        "slash command",
-        "rpg",
-        "rolz",
-        "dice",
-        "dice roller"
-    ],
-    "author": "Chris Dempsey",
-    "license": "MIT",
-    "dependencies": {
-        "botkit": "^0.2.2"
-    },
-    "devDependencies": {
-        "chai": "^3.5.0",
-        "mocha": "^2.5.3"
-    },
-    "private": "true",
-    "license": "MIT"
+  "name": "slack-dicey",
+  "version": "1.0.0",
+  "description": "App that adds slash commands to Stack for RPG dice rolling through the Rolz.org API",
+  "author": "Chris Dempsey",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/index.js",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cdempsey/slack-dicey"
+  },
+  "bugs": {
+    "url": "https://github.com/cdempsey/slack-dicey/issues"
+  },
+  "keywords": [
+    "slack",
+    "slash command",
+    "rpg",
+    "rolz",
+    "dice",
+    "dice roller"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "botkit": "^0.2.2"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3"
+  },
+  "private": "true"
 }
